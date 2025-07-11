@@ -32,6 +32,6 @@ export class ProductService {
     return this.httpClient.put<Product>(`${this.baseUrl}/${product.id}`,product);
   }
   delete(id: Number){
-    return this.httpClient.delete<Product>(`${this.baseUrl}/${id}` );
+    return this.httpClient.delete<Product>(`${this.baseUrl}/${id}`);
   }
 }

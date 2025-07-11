@@ -1,25 +1,26 @@
-<div class="container" style="width: 850px;">
-    <table class="table table-tripped" style="border: 1px salmon;">
-        <thead>
-            <tr class="bg-primary">
-                <th scope="col">ProductId</th>
-                <th scope="col">Name</th>
-                <th scope="col">Type</th>
-                <th scope="col">Brand</th>
-                <th scope="col">Edit</th>
-                <th scope="col">Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let prd of products">
-                <td scope = "row">{{prd.id}}</td>
-                <td>{{prd.name}}</td>
-                <td>{{prd.type}}</td>
-                <td>{{prd.brand}}</td>
-                <td><button class="btn btn-primary">Edit</button></td>
-                <td><button class="btn btn-danger">Delete</button></td>
-            </tr>
-        </tbody>
+<div class="container" style="width: 850px">
+  <input class="mt-4" type="search" (input)="filterProducts(filter.value)" name="inputsearch" placeholder="Search Products here" id="inputsearch" style="width: 250px;" #filter>
+  <table class="table table-tripped" style="border: 1px salmon">
+    <thead>
+      <tr class="bg-primary">
+        <th scope="col">ProductId</th>
+        <th scope="col">Name</th>
+        <th scope="col">Type</th>
+        <th scope="col">Brand</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prd of filteredProd">
+        <td scope="row">{{ prd.id }}</td>
+        <td>{{ prd.name }}</td>
+        <td>{{ prd.type }}</td>
+        <td>{{ prd.brand }}</td>
+        <td> <a type="button" (click)="logClick()" [routerLink]="['/product/edit', prd.id]" class="btn btn-primary">Edit</a></td>
 
-    </table>
+        <td><a type="button" (click)="delete(prd.id)" class="btn btn-danger">Delete</a></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
